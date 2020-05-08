@@ -25,7 +25,7 @@
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "euv-scb",
+      "defaultValue": "vmFromImage",
       "metadata": {
         "description": "Name of the data collector VM"
       }
@@ -80,7 +80,7 @@
                 "storageProfile": {
                     "osDisk": {
                         "osType": "Linux",
-                        "osState": "Specialized",
+                        "osState": "Generalized",
                         "blobUri": "[variables('osDiskVhdUri')]",
                         "storageAccountType": "Standard_LRS"
                     }
@@ -122,20 +122,6 @@
                             "access": "Allow",
                             "priority": 100,
                             "direction": "Inbound"
-                        }
-                    },
-                    {
-                        "name": "EuVantageDashboardConnection",
-                        "properties": {
-                            "description": "Allow communication on 443",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "443",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Outbound"
                         }
                     }
                 ]
@@ -186,6 +172,8 @@
                 },
                 "osProfile": {
                     "computerName": "[parameters('vmName')]",
+                    "adminUsername": "anunta",
+                    "adminPassword": "pass@123",
                     "linuxConfiguration": null
                 },
                 "storageProfile": {

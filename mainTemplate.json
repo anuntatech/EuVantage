@@ -25,7 +25,7 @@
     },
     "vmName": {
       "type": "string",
-      "defaultValue": "vmFromImage",
+      "defaultValue": "EuVantage",
       "metadata": {
         "description": "Name of the data collector VM"
       }

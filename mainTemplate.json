@@ -52,7 +52,7 @@
   },
   "variables": {
     "storageAccountName": "[concat('diags', uniquestring(resourceGroup().id))]",
-    "osDiskVhdUri": "https://scbdiag215.blob.core.windows.net/scbimg/abcd.vhd",
+    "osDiskVhdUri": "https://scbdiag215.blob.core.windows.net/scbimg/SCB.VHD",
     "nicName": "euvScbVMNic",
     "publicIPAddressName": "myPublicIP",
     "networkSecurityGroupName": "nsgEuvSCBAllowSSH",

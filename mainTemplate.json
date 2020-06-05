@@ -65,7 +65,7 @@
             "apiVersion": "2019-06-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "Standard_GRS"
+                "name": "Standard_LRS"
             },
             "kind": "Storage",
             "properties": {
@@ -82,7 +82,7 @@
                         "osType": "Linux",
                         "osState": "Generalized",
                         "blobUri": "[variables('osDiskVhdUri')]",
-                        "storageAccountType": "Standard_GRS"
+                        "storageAccountType": "Standard_LRS"
                     }
                 },
                 "hyperVGeneration": "V1"

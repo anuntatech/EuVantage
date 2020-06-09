@@ -53,21 +53,10 @@
   "variables": {
     "storageAccountName": "[concat('diags', uniquestring(resourceGroup().id))]",
     "osDiskVhdUri": "https://scbdiag215.blob.core.windows.net/scbimg/abcd.vhd",
-    "osDiskVhdUriCentralIndia": "https://euv.blob.core.windows.net/scb-img/scb/abcd.vhd",
     "nicName": "euvScbVMNic",
     "publicIPAddressName": "myPublicIP",
     "networkSecurityGroupName": "nsgEuvSCBAllowSSH",
     "subnetRef": "[resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetworkName'), parameters('subnetName'))]",
-    "storageProfileeastus2": {
-      "imageReference": {
-        "id": "[resourceId('Microsoft.Compute/images', 'euv_scb_img_eastus2')]"
-      }
-    },
-    "storageProfilecentralindia": {
-      "imageReference": {
-        "id": "[resourceId('Microsoft.Compute/images', 'euv_scb_img_centralindia')]"
-      }
-    },
     "storageProfile2": {
       "imageReference": {
         "publisher": "Canonical",
@@ -88,42 +77,6 @@
       },
       "kind": "Storage",
       "properties": {}
-    },
-    {
-      "type": "Microsoft.Compute/images",
-      "apiVersion": "2019-12-01",
-      "name": "euv_scb_img_eastus2",
-      "location": "[parameters('location')]",
-      "condition": "[equals(parameters('location'), 'eastus3')]",
-      "properties": {
-        "storageProfile": {
-          "osDisk": {
-            "osType": "Linux",
-            "osState": "Generalized",
-            "blobUri": "[variables('osDiskVhdUri')]",
-            "storageAccountType": "Standard_LRS"
-          }
-        },
-        "hyperVGeneration": "V1"
-      }
-    },
-    {
-      "type": "Microsoft.Compute/images",
-      "apiVersion": "2019-12-01",
-      "name": "euv_scb_img_centralindia",
-      "location": "[parameters('location')]",
-      "condition": "[equals(parameters('location'), 'centralindia')]",
-      "properties": {
-        "storageProfile": {
-          "osDisk": {
-            "osType": "Linux",
-            "osState": "Generalized",
-            "blobUri": "[variables('osDiskVhdUriCentralIndia')]",
-            "storageAccountType": "Standard_LRS"
-          }
-        },
-        "hyperVGeneration": "V1"
-      }
     },
     {
       "apiVersion": "2020-03-01",

@@ -201,7 +201,6 @@
       "dependsOn": [
         "[variables('storageAccountName')]",
         "[variables('nicName')]",
-        "euv_scb_img"
       ],
       "properties": {
         "hardwareProfile": {

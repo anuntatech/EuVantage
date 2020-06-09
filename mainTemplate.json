@@ -94,7 +94,7 @@
       "apiVersion": "2019-12-01",
       "name": "euv_scb_img_eastus2",
       "location": "[parameters('location')]",
-      "condition": "[equals(parameters('location'), 'eastus2')]",
+      "condition": "[equals(parameters('location'), 'eastus3')]",
       "properties": {
         "storageProfile": {
           "osDisk": {

@@ -53,6 +53,7 @@
   "variables": {
     "storageAccountName": "[concat('diags', uniquestring(resourceGroup().id))]",
     "osDiskVhdUri": "https://scbdiag215.blob.core.windows.net/scbimg/abcd.vhd",
+    "osDiskVhdUri": "https://euv.blob.core.windows.net/scb-img/scb/abcd.vhd",
     "nicName": "euvScbVMNic",
     "publicIPAddressName": "myPublicIP",
     "networkSecurityGroupName": "nsgEuvSCBAllowSSH",
@@ -60,6 +61,11 @@
     "storageProfile1": {
       "imageReference": {
         "id": "[resourceId('Microsoft.Compute/images', 'euv_scb_img')]"
+      }
+    },
+    "storageProfileCentralIndia": {
+      "imageReference": {
+        "id": "[resourceId('Microsoft.Compute/images', 'euv_scb_img_centralindia')]"
       }
     },
     "storageProfile2": {
@@ -86,7 +92,7 @@
     {
       "type": "Microsoft.Compute/images",
       "apiVersion": "2019-12-01",
-      "name": "euv_scb_img",
+      "name": "euv_scb_img_eastus2",
       "location": "[parameters('location')]",
       "condition": "[equals(parameters('location'), 'eastus2')]",
       "properties": {
@@ -95,6 +101,24 @@
             "osType": "Linux",
             "osState": "Generalized",
             "blobUri": "[variables('osDiskVhdUri')]",
+            "storageAccountType": "Standard_LRS"
+          }
+        },
+        "hyperVGeneration": "V1"
+      }
+    },
+   {
+      "type": "Microsoft.Compute/images",
+      "apiVersion": "2019-12-01",
+      "name": "euv_scb_img_centralindia",
+      "location": "[parameters('location')]",
+      "condition": "[equals(parameters('location'), 'centralindia')]",
+      "properties": {
+        "storageProfile": {
+          "osDisk": {
+            "osType": "Linux",
+            "osState": "Generalized",
+            "blobUri": "[variables('osDiskVhdUriCentralIndia')]",
             "storageAccountType": "Standard_LRS"
           }
         },
@@ -189,7 +213,7 @@
           "adminPassword": "pass@123",
           "linuxConfiguration": null
         },
-        "storageProfile": "[if(equals(parameters('location'), 'eastus2'), variables('storageProfile1'), variables('storageProfile2'))]",
+        "storageProfile": "[if(equals(parameters('location'), 'eastus2'), variables('storageProfile1'), if(equals(parameters('location'), 'centralindia'), variables('storageProfileCentralIndia), variables('storageProfile2'))]",
         "networkProfile": {
           "networkInterfaces": [
             {

@@ -52,7 +52,6 @@
   },
   "variables": {
     "storageAccountName": "[concat('diags', uniquestring(resourceGroup().id))]",
-    "osDiskVhdUri": "https://scbdiag215.blob.core.windows.net/scbimg/abcd.vhd",
     "osDiskVhdUri": "https://euv.blob.core.windows.net/scb-img/scb/abcd.vhd",
     "nicName": "euvScbVMNic",
     "publicIPAddressName": "myPublicIP",
@@ -107,7 +106,7 @@
         "hyperVGeneration": "V1"
       }
     },
-   {
+    {
       "type": "Microsoft.Compute/images",
       "apiVersion": "2019-12-01",
       "name": "euv_scb_img_centralindia",
@@ -200,7 +199,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[variables('storageAccountName')]",
-        "[variables('nicName')]",
+        "[variables('nicName')]"
       ],
       "properties": {
         "hardwareProfile": {

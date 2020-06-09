@@ -60,7 +60,7 @@
     "subnetRef": "[resourceId(parameters('virtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetworkName'), parameters('subnetName'))]",
     "storageProfileeastus2": {
       "imageReference": {
-        "id": "[resourceId('Microsoft.Compute/images', 'euv_scb_img')]"
+        "id": "[resourceId('Microsoft.Compute/images', 'euv_scb_img_eastus2')]"
       }
     },
     "storageProfilecentralindia": {

@@ -213,7 +213,7 @@
           "adminPassword": "pass@123",
           "linuxConfiguration": null
         },
-        "storageProfile": "[if(equals(parameters('location'), 'eastus2'), variables('storageProfile1'), if(equals(parameters('location'), 'centralindia'), variables('storageProfileCentralIndia), variables('storageProfile2')), variables('storageProfile2'))]",
+        "storageProfile": "[if(equals(parameters('location'), 'eastus2'), variables('storageProfile1'), if(equals(parameters('location'), 'centralindia'), variables('storageProfileCentralIndia), variables('storageProfile2')))]",
         "networkProfile": {
           "networkInterfaces": [
             {
